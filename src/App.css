@@ -1,38 +1,178 @@
-.App {
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* SOBRE */
+.envelope {
+  background: white;
+  padding: 30px 50px;
+  border-radius: 20px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.envelope:hover {
+  transform: scale(1.05);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* CARTA */
+.letter {
+  background: white;
+  width: 95%;
+  max-width: 650px;
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease;
+
+  max-height: 85vh;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+}
+
+.letter pre {
+  white-space: pre-wrap;
+  font-size: 1.2rem;
+  color: #b03060;
+  line-height: 1.8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PREGUNTA */
+.question {
+  margin-top: 30px;
+  font-size: 1.3rem;
+  color: #8b0000;
+}
+
+/* BOTÓN ROMÁNTICO */
+.romanticBtn {
+  margin-top: 20px;
+  padding: 15px 40px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.1rem;
+  background: linear-gradient(45deg, #ff4e50, #f9d423);
   color: white;
+  cursor: pointer;
+  transition: 0.4s;
 }
 
-.App-link {
-  color: #61dafb;
+.romanticBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* MENSAJE FINAL */
+.forever {
+  margin-top: 30px;
+  font-size: 1.4rem;
+  color: #c71585;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px pink; }
+  to { text-shadow: 0 0 25px red; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .container {
+    align-items: flex-start;
+    padding-top: 40px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .letter {
+    padding: 25px;
+    max-height: 80vh;
   }
+
+  .letter pre {
+    font-size: 1rem;
+  }
+
+  .romanticBtn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+.signature {
+  margin-top: 40px;
+  animation: fadeInSoft 2s ease;
+}
+
+.signature h2 {
+  font-family: cursive;
+  font-size: 2rem;
+  color: #c71585;
+}
+
+.forever {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #b03060;
+  opacity: 0.9;
+}
+
+@keyframes fadeInSoft {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Lluvia suave de corazones */
+.heartRain span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: red;
+  transform: rotate(45deg);
+  top: -20px;
+  animation: fall 6s linear infinite;
+  opacity: 0.7;
+}
+
+.heartRain span::before,
+.heartRain span::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heartRain span::before {
+  top: -7px;
+  left: 0;
+}
+
+.heartRain span::after {
+  left: -7px;
+  top: 0;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(45deg); }
+  100% { transform: translateY(100vh) rotate(45deg); }
 }
