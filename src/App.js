@@ -59,8 +59,7 @@ Te amo, Nicky ❤️
 
   return (
     <div className="container">
-      {/* Si quieres que se repita automáticamente, deja loop */}
-      <audio ref={audioRef} src="/luna.mp3" loop />
+    <audio ref={audioRef} src={`${process.env.PUBLIC_URL}/luna.mp3`} loop />
 
       {!open && (
         <div className="envelope" onClick={handleOpen}>
